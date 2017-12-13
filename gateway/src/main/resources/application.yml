@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: gateway
+  sleuth:
+    sampler:
+      percentage: 1.0
+  zipkin:
+    base-url: http://zipkin-server
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    ms1:
+      service-id: microservice-1
+    ms2:
+      service-id: microservice-2
+
+management:
+  security:
+    enabled: false
+
