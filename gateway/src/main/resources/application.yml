@@ -6,16 +6,20 @@ spring:
       percentage: 1.0
   zipkin:
     base-url: http://zipkin-server
+  cloud:
+    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+      routes:
+          # =====================================
+          - id: ms1
+            uri: lb://microservice-1
+            predicates:
+            - Path=/ms1
 
-zuul:
-  ignoredServices: '*'
-  routes:
-    ms1:
-      service-id: microservice-1
-    ms2:
-      service-id: microservice-2
-
-management:
-  security:
-    enabled: false
-
+eureka:
+  instance:
+    health-check-url-path: /actuator/health
+    status-page-url-path: /actuator/info
+    home-page-url-path: /actuator
