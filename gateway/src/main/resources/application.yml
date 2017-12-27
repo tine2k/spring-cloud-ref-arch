@@ -19,3 +19,6 @@ management:
   security:
     enabled: false
 
+endpoints:
+  prometheus:
+    enabled: true
